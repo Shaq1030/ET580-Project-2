@@ -2,6 +2,8 @@
 // Container.cpp (Phase I )
 // constructor,destructor, empty
 #include "Container.h"
+#using namespace std;
+
 
 // constructor: sets default values and allocates memory
 intArray::intArray()
@@ -26,8 +28,8 @@ return numValues == 0; // true if no elements
 //Bryan Commit 2
 // size: returns the current number of stored values
 int intArray::size() const
-{
-    return numValues;
+{ 
+    return numValues; 
 }
 // maxSize: returns the maximum capacity of the array
 int intArray::maxSize() const
@@ -40,31 +42,32 @@ void intArray::reserve(int n)
     if (n <= maxValues)
         return; // do nothing if n <= current capacity
 
-    int* newData = new int[n]; // allocate new memory
+    int* newData = new int[n]; 
 
     // copy old values
     for (int i = 0; i < numValues; ++i)
         newData[i] = data[i];
-    delete[] data;       // free old memory
-    data = newData;      // reassign pointer
-    maxValues = n;       // update capacity
+    delete[] data;       
+    data = newData;      
+    maxValues = n;      
 }
 
 //(Ernest First) Remove all array values so that the number of values is zero.
-void clear()
-sz = 0;
+void intArray::clear(){
+numValues = 0;
 }
 
 // Add value to the end of the array, doubling capacity if full.
-void push_back(const T& value) {
-if (sz == cap) reserve(cap * 2); // Double the capacity if needed
-arr[sz++] = value;
+void push_back(int value) {
+if (numValues == maxValues) 
+    reserve(maxValues * 2); // Double the capacity if needed
+data[numValues++] = value;
 }
 
 // Print all array values to the console on one line.
-void print() const {
-for (int i = 0; i < sz; ++i)
-std::cout << arr[i] << " ";
-std::cout << std::endl;
+void intArray::print() const {
+for (int i = 0; i < numValues; ++i)
+cout << data[i] << " ";
+cout << endl;
 }
 

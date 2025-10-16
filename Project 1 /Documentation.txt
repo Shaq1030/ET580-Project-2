@@ -1,3 +1,5 @@
 Bryan - 
 Added all files as mention in insturctions
+Added size, maxSize, reserve functions in container.h and container.cpp
+Fixed Ernest code to run with rest of code
 
