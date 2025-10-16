@@ -23,6 +23,33 @@ bool intArray::empty() const
 {
 return numValues == 0; // true if no elements
 
+//Bryan Commit 2
+// size: returns the current number of stored values
+int intArray::size() const
+{
+    return numValues;
+}
+// maxSize: returns the maximum capacity of the array
+int intArray::maxSize() const
+{
+    return maxValues;
+}
+// reserve: increase capacity if new size is greater than current max
+void intArray::reserve(int n)
+{
+    if (n <= maxValues)
+        return; // do nothing if n <= current capacity
+
+    int* newData = new int[n]; // allocate new memory
+
+    // copy old values
+    for (int i = 0; i < numValues; ++i)
+        newData[i] = data[i];
+    delete[] data;       // free old memory
+    data = newData;      // reassign pointer
+    maxValues = n;       // update capacity
+}
+
 //(Ernest First) Remove all array values so that the number of values is zero.
 void clear()
 sz = 0;

@@ -14,6 +14,9 @@ public:
 intArray(); // constructor
 ~intArray(); // destructor
 bool empty() const; // is empty
+int size)_ cont; 
+int maxSize cont;
+void reserve(int n);
 };
 
 #endif
