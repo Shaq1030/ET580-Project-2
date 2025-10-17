@@ -71,3 +71,28 @@ cout << data[i] << " ";
 cout << endl;
 }
 
+//Phase 2 
+
+//Bryan Commit 2
+// at: validate index and return reference to value
+int& intArray::at(int index)
+{
+    assert(index >= 0 && index < numValues); // validate index
+    return data[index];
+}
+
+// resize: adjust current number of values
+void intArray::resize(int n)
+{
+    if (n < numValues) {
+        numValues = n;
+    }
+    else {
+        if (n > maxValues)
+            reserve(maxValues * 2); 
+        for (int i = numValues; i < n; ++i)
+            data[i] = 0;
+        numValues = n;
+    }
+} 
+

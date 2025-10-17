@@ -21,6 +21,11 @@ void clear();
 void push_back(int value);
 void print() const;
 
+//phase 2 functions
+int& at(int index);
+void resize(int n);
+
+
 };
 
 #endif
