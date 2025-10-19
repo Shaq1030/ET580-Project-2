@@ -1,15 +1,17 @@
-# executable file to create and its dependencies
-prog : Driver_Phase1.o Container.o
-	g++ -std=c++11 -o prog Driver_Phase1.o Container.o
+CXX = g++
+CXXFLAGS = -g -Wall -std=c++11
 
-# file dependencies
-Driver_Phase1.o : Container.h
-	g++ -std=c++11 -c Driver_Phase1.cpp
+TARGET = dynamic_array
+SRCS = Driver_Phase1.cpp Container.cpp Files.cpp
+OBJS = $(SRCS:.cpp=.o)
 
-Container.o : Container.h
-	g++ -std=c++11 -c Container.cpp
+all: $(TARGET)
 
-# remove all object and executable files
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+%.o: %.cpp
+	$(CXX) $(CXXFLAGS) -c $< -o $@
+
 clean:
-	rm -f *.o
-	rm -f prog
+	rm -f $(OBJS) $(TARGET)
