@@ -12,17 +12,11 @@ intArray::intArray() : maxValues(5), numValues(0) {
 }
 
 
-// Destructor - Deallocate the dynamic array
-intArray::~intArray() {
-    delete[] data;
-}
-
 
 // Return true if the array is empty, false otherwise
 bool intArray::empty() const {
     return numValues == 0;
 }
-
 
 // ===== Brian's Section =====
 // Return the number of values in the array
@@ -85,12 +79,12 @@ void intArray::push_back(int value) {
 // Print all array values to the console on one line
 void intArray::print() const {
     for (int i = 0; i < numValues; i++) {
-        std::cout << data[i];
+        cout << data[i];
         if (i < numValues - 1) {
-            std::cout << " ";
+            cout << " ";
         }
     }
-    std::cout << std::endl;
+    cout << endl;
 }
 
 
