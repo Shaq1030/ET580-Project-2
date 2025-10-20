@@ -20,7 +20,7 @@ Implemented the following core functions:
    - Provides a quick way to check if the container is empty
 
 ==================================================================
-BRIAN
+BRYAN
 ==================================================================
 
 Implemented the following core functions:
@@ -38,7 +38,15 @@ Implemented the following core functions:
    - Creates a new larger array and copies existing elements
    - Properly manages memory by deleting the old array
    - Updates the maxValues variable to reflect the new capacity
-
+4. at() function  
+   - Validates that the index is within the legal range using an assertion.
+   - If the index is valid, it returns a reference to the element, allowing both reading and modifying that value directly.
+   - If the index is out of range, the assertion fails, which helps detect logic errors during debugging.
+5. resize() function 
+   - If n is less than the current number of elements (numValues), the array shrinks to that new size, removing extra elements.
+   - If n is greater than the current number of elements, the array expands by filling new slots with default values (zero).
+   - If n exceeds the current capacity (maxValues), the reserve() function is called to allocate more memory before expanding.
+   - After adjustment, numValues is updated to the new size.
 ==================================================================
 ERNEST
 ==================================================================

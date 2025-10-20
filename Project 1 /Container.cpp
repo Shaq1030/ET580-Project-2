@@ -1,7 +1,6 @@
 #include "Container.h"
 #include <iostream>
 
-
 using namespace std;
 
 
@@ -20,7 +19,7 @@ bool intArray::empty() const {
 }
 // empty() implemented by Sikder Ishaq
 
-// ===== Brian's Section =====
+// ===== Bryan's Section =====
 // Return the number of values in the array
 int intArray::size() const {
     return numValues;
@@ -130,8 +129,44 @@ bool intArray::insert(int value, int index) {
     data[index] = value;
     numValues++;
     return true;
+
+
 }
 // insert implemented by Sikder Ishaq (Phase II)
+
+//Bryan Phase 2
+//   - Adjusts the current number of values in the array
+//   - If n < numValues, shrink and discard extra values
+//   - If n > numValues, fill new slots with default values (0)
+//   - If n > maxValues, reserve() is called to expand capacity first
+
+int& intArray::at(int index) {
+    assert(index >= 0 && index < numValues);  
+    return data[index];
+}
+
+void intArray::resize(int n) {
+    if (n < numValues) {
+        numValues = n;
+    } 
+    else if (n > numValues) {
+        if (n > maxValues) {
+            int newCapacity = maxValues;
+            while (newCapacity < n)
+                newCapacity *= 2;
+            reserve(newCapacity);
+        }
+
+        for (int i = numValues; i < n; ++i) {
+            data[i] = 0;
+        }
+
+        numValues = n;
+    }
+}
+
+
+
 
 
 

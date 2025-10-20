@@ -37,6 +37,13 @@ public:
     //   - Elements at and after index are shifted right to make room.
     //   - Returns true on success, false if `index` is out of range.
     bool insert(int value, int index); 
+
+    //Bryan phase 2
+
+    //returns reference to allow read/write
+    int& at(int index);
+    const int& at(int index) const; // const version for read-only access
+    void resize(int n);
 };
 
 #endif // CONTAINER_H
