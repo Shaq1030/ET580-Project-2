@@ -10,6 +10,7 @@ using namespace std;
 intArray::intArray() : maxValues(5), numValues(0) {
     data = new int[maxValues];
 }
+// Constructor implemented by Sikder Ishaq
 
 
 
@@ -17,6 +18,7 @@ intArray::intArray() : maxValues(5), numValues(0) {
 bool intArray::empty() const {
     return numValues == 0;
 }
+// empty() implemented by Sikder Ishaq
 
 // ===== Brian's Section =====
 // Return the number of values in the array
@@ -86,5 +88,51 @@ void intArray::print() const {
     }
     cout << endl;
 }
+
+// ===== Sikder Ishaq Phase II: Extended member functions =====
+// pop_back
+//   - Safe removal of the last element
+//   - Checks emptiness to avoid underflow
+//   - Leaves allocated capacity intact for future pushes
+void intArray::pop_back() {
+    if (numValues == 0) {
+        // Array is empty; nothing to pop
+        return;
+    }
+    // Decrement count to logically remove the last element
+    numValues--;
+}
+// pop_back implemented by Sikder Ishaq (Phase II)
+
+// insert
+//   - Insert value at the specified index (0..numValues)
+//   - If index==numValues the function appends (equivalent to push_back)
+//   - On full capacity the internal buffer is grown (reserve)
+//   - Elements at and after index are shifted right to make room
+//   - Returns false if index is out of range
+bool intArray::insert(int value, int index) {
+    if (index < 0 || index > numValues) {
+        // invalid index
+        return false;
+    }
+
+    // Grow if needed
+    if (numValues >= maxValues) {
+        reserve(maxValues * 2);
+    }
+
+    // Shift elements right to open slot at index
+    for (int i = numValues; i > index; --i) {
+        data[i] = data[i - 1];
+    }
+
+    // Place new element and update count
+    data[index] = value;
+    numValues++;
+    return true;
+}
+// insert implemented by Sikder Ishaq (Phase II)
+
+
 
 

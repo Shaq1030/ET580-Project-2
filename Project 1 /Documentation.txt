@@ -60,3 +60,38 @@ Implemented the following core functions:
    - Formats output with spaces between elements
    - Ends with a newline character for clean output
 
+Sikder Ishaq - Phase II: pop_back and insert
+
+What was done-
+- These functions extend the `intArray` container with safe removal and insertion.
+
+pop_back
+- Purpose: remove the last element if the array contains data.
+- Behavior:
+  - If the array is empty, the function does nothing (no underflow).
+  - If non-empty, `numValues` is decremented by 1. Memory capacity (`maxValues`) is unchanged.
+- Complexity: O(1)
+
+insert(value, index)
+- Purpose: insert a value at the specified index.
+- Parameters:
+  - value: integer value to be inserted.
+  - index: location to insert, valid values are 0..size(). An index equal to size() appends.
+- Behavior:
+  - If the index is invalid (<0 or >size()) the function returns false and makes no change.
+  - If the internal buffer is full, the container grows via `reserve` (typically doubles capacity).
+  - Elements from `index` to `size()-1` are shifted right by one to make space.
+  - The value is placed at `data[index]` and `numValues` increments.
+- Complexity: O(n) in the worst case due to shifting.
+
+Usage examples (pseudo-code):
+  intArray a;
+  a.push_back(1);
+  a.push_back(3);
+  a.insert(2, 1);    // a now contains 1,2,3
+  a.pop_back();      // a now contains 1,2
+
+Notes
+- These functions intentionally do not shrink the allocated memory when elements are removed. This keeps repeated push/pop efficient.
+- Validation is conservative: insert returns false on invalid indices rather than throwing exceptions.
+
