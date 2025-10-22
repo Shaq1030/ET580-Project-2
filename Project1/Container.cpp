@@ -94,11 +94,7 @@ void intArray::print() const {
 //   - Checks emptiness to avoid underflow
 //   - Leaves allocated capacity intact for future pushes
 void intArray::pop_back() {
-    if (numValues == 0) {
-        // Array is empty; nothing to pop
-        return;
-    }
-    // Decrement count to logically remove the last element
+   assert(numValues>0); // Ensure array is not empty
     numValues--;
 }
 // pop_back implemented by Sikder Ishaq (Phase II)
@@ -110,17 +106,12 @@ void intArray::pop_back() {
 //   - Elements at and after index are shifted right to make room
 //   - Returns false if index is out of range
 bool intArray::insert(int value, int index) {
-    if (index < 0 || index > numValues) {
-        // invalid index
-        return false;
-    }
+    assert(index >= 0 && index <= numValues); // Validate index range
 
-    // Grow if needed
     if (numValues >= maxValues) {
         reserve(maxValues * 2);
     }
 
-    // Shift elements right to open slot at index
     for (int i = numValues; i > index; --i) {
         data[i] = data[i - 1];
     }
@@ -162,12 +153,12 @@ void intArray::resize(int n) {
 //Ernest Harris Phase 2 (Erase)
 
 void intArray::erase(int start, int end) {
-assert(start >= 0 && end >= start && end < numvalues);
+assert(start >= 0 && end >= start && end < numValues);
 int count = end - start + 1;
-for (int i = end + 1; i < numvalues; ++i) {
+for (int i = end + 1; i < numValues; ++i) {
 data[i - count] = data[i];
 }
-numvalues -= count;
+numValues -= count;
 }
 
 

@@ -103,3 +103,41 @@ Notes
 - These functions intentionally do not shrink the allocated memory when elements are removed. This keeps repeated push/pop efficient.
 - Validation is conservative: insert returns false on invalid indices rather than throwing exceptions.
 
+Sikder Ishaq - Phase III: rotateLeft added
+
+What was done-
+- Added algorithm utility function `rotateLeft(intArray &data, int n)` in Algorithms.*.
+
+Behavior
+- Rotates elements left by `n` positions; uses `n % size()` to normalize large rotations.
+- Asserts `n > 0`; returns early for empty arrays or when `n % size() == 0`.
+- Uses a temporary buffer for the first `k` elements, shifts remaining elements left, then writes buffered elements to the end.
+- Time complexity: O(n). Space complexity: O(k), where `k = n % size()`.
+
+Example (matching classroom whiteboard):
+- Input: `[5, 10, 15, 20, 25, 30]`, rotate left by 2
+- Output: `[15, 20, 25, 30, 5, 10]`
+
+What was added
+- New algorithm function: `rotateLeft(intArray &data, int n)` implemented in `Algorithms.cpp` and declared in `Algorithms.h`.
+- Driver demo: `Driver_Phase3.cpp` includes a before/after demonstration of rotating `[5, 10, 15, 20, 25, 30]` by 2 positions.
+- Build target: `makefile` now has a `phase3` target that builds `dynamic_array_phase3.exe`.
+- Scope decision: `isRotated` was intentionally not included based on project direction; only `rotateLeft` is part of Phase III.
+
+How to build and run (Windows PowerShell)
+- Navigate to the project folder:
+  - `cd "c:\Users\shaas\Downloads\ET580-Project-2-main\Project 1"`
+- Build Phase 3 executable (if `make` is installed):
+  - `make phase3`
+- Or build directly with the compiler:
+  - `g++ -std=c++17 -Wall -g -o dynamic_array_phase3.exe Driver_Phase3.cpp Container.cpp Files.cpp Algorithms.cpp`
+- Run the demo:
+  - `./dynamic_array_phase3.exe`
+
+Notes
+- `rotateLeft` asserts `n > 0`. For `n <= 0`, the assertion will fail in debug builds.
+- Rotation uses `n % size()` to normalize large `n` values.
+- Demo code is present at the end of `main()` in `Driver_Phase3.cpp` and can be removed or adjusted for custom tests.
+
+
+
