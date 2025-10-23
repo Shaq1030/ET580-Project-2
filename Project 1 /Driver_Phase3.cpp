@@ -95,5 +95,14 @@ int main() {
     cout << "pop_back on empty (no change) -> "; arr.print();
 
     cout << "Final size: " << arr.size() << endl;
+    cout<<"\n--Phase 3--\n"<<endl;
+
+    
+
+
+
+
+
+
     return 0;
 }

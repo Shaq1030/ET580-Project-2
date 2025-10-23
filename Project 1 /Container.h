@@ -44,6 +44,9 @@ public:
     int& at(int index);
     const int& at(int index) const; // const version for read-only access
     void resize(int n);
+
+    void erase(int start, int end);
+
 };
 
 #endif // CONTAINER_H

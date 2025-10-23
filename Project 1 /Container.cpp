@@ -1,6 +1,6 @@
 #include "Container.h"
 #include <iostream>
-
+#include <cassert>
 using namespace std;
 
 
@@ -135,11 +135,6 @@ bool intArray::insert(int value, int index) {
 // insert implemented by Sikder Ishaq (Phase II)
 
 //Bryan Phase 2
-//   - Adjusts the current number of values in the array
-//   - If n < numValues, shrink and discard extra values
-//   - If n > numValues, fill new slots with default values (0)
-//   - If n > maxValues, reserve() is called to expand capacity first
-
 int& intArray::at(int index) {
     assert(index >= 0 && index < numValues);  
     return data[index];
@@ -166,7 +161,7 @@ void intArray::resize(int n) {
 }
 //Ernest Harris Phase 2 (Erase)
 
-void inthrray::erase(int start, int end) {
+void intArray::erase(int start, int end) {
 assert(start >= 0 && end >= start && end < numvalues);
 int count = end - start + 1;
 for (int i = end + 1; i < numvalues; ++i) {
