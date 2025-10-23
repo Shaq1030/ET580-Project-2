@@ -164,8 +164,16 @@ void intArray::resize(int n) {
         numValues = n;
     }
 }
+//Ernest Harris Phase 2 (Erase)
 
-
+void inthrray::erase(int start, int end) {
+assert(start >= 0 && end >= start && end < numvalues);
+int count = end - start + 1;
+for (int i = end + 1; i < numvalues; ++i) {
+data[i - count] = data[i];
+}
+numvalues -= count;
+}
 
 
 
