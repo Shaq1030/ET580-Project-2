@@ -7,4 +7,6 @@
 // Rotates in-place; asserts n > 0; no change if n % size() == 0.
 void rotateLeft(intArray &data, int n);
 
+bool isRotated(const intArray &A, const intArray &B); 
+
 #endif // ALGORITHMS_H
