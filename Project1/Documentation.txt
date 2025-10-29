@@ -139,5 +139,11 @@ Notes
 - Rotation uses `n % size()` to normalize large `n` values.
 - Demo code is present at the end of `main()` in `Driver_Phase3.cpp` and can be removed or adjusted for custom tests.
 
+-- Bryan Phase 3
 
-
+- Created isRotated function
+   -Creates an intArray and fills it with 10, 20, 30, 40, 50.
+   -Calls rotateLeft(data, 2) → should shift the first two to the end.
+   -Builds a second array (checkArray) that matches the expected rotated version.
+   -Uses isRotated() to verify they are rotations of each other.
+   -Tests edge cases: rotation by 0 and by full size n.
