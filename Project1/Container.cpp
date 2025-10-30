@@ -131,6 +131,12 @@ int& intArray::at(int index) {
     return data[index];
 }
 
+// Const overload of at() to allow read-only access on const intArray
+const int& intArray::at(int index) const {
+    assert(index >= 0 && index < numValues);
+    return data[index];
+}
+
 void intArray::resize(int n) {
     if (n < numValues) {
         numValues = n;

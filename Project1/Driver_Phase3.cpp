@@ -1,4 +1,4 @@
-// Sikder Ishaq Driver File for Phase 2
+// Sikder Ishaq Driver File for Phase 3
 #include <iostream>
 #include "Container.h"
 // Phase 3 uses file read and algorithm; include headers
@@ -90,12 +90,36 @@ int main() {
     cout << "Final size: " << arr.size() << endl;
     cout<<"\n--Phase 3--\n"<<endl;
 
-    
 
+    // Demonstration of rotateLeft and isRotated
+    intArray original;
+    original.push_back(10);
+    original.push_back(20);
+    original.push_back(30);
+    original.push_back(40);
+    original.push_back(50);
 
+    cout << "Original: "; original.print();
 
+    intArray rotated; // deep copy via push_back to avoid shallow pointer copy
+    for (int i = 0; i < original.size(); ++i) {
+        rotated.push_back(original.at(i));
+    }
+    cout << "Rotating left by 2..." << endl;
+    rotateLeft(rotated, 2);
+    cout << "Rotated:  "; rotated.print();
 
+    bool rotatedOk = isRotated(rotated, original);
+    cout << "isRotated(rotated, original)? " << (rotatedOk ? "true" : "false") << endl;
 
+    // Edge case: rotation by size should produce equivalent arrangement
+    intArray unchanged; // deep copy via push_back
+    for (int i = 0; i < original.size(); ++i) {
+        unchanged.push_back(original.at(i));
+    }
+    rotateLeft(unchanged, original.size());
+    cout << "Rotate by size (" << original.size() << ") -> "; unchanged.print();
+    cout << "isRotated(unchanged, original)? " << (isRotated(unchanged, original) ? "true" : "false") << endl;
 
     return 0;
 }
