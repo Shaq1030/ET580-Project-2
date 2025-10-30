@@ -31,3 +31,23 @@ void rotateLeft(intArray &data, int n) {
 
     delete[] temp; // cleanup temporary buffer
 }
+
+bool isRotated(const intArray &A, const intArray &B) {
+    // If sizes differ, they can’t be rotations
+    if (A.size() != B.size()) return false;
+    int n = A.size();
+    if (n == 0) return true;
+
+    // Try every possible rotation offset
+    for (int shift = 0; shift < n; ++shift) {
+        bool match = true;
+        for (int i = 0; i < n; ++i) {
+            if (A.at(i) != B.at((i + shift) % n)) {
+                match = false;
+                break;
+            }
+        }
+        if (match) return true;
+    }
+    return false;
+}
